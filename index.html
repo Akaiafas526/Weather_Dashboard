@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+</head>
+<body>
+    <div class="flex-row align-center justify-center min-100-vh bg-primary">
+        <div class="col-12 col-md-9 flex-column align-center bg-light p-5">
+          <h1 class="text-primary">Find your city!</h1>
+          <form id="search-form" class="form w-100">
+            <input id="search-input" class="form-input w-100" type="text" placeholder="Search!">
+            <select id="format-input" class="form-input w-100">
+              <option value="" disabled selected>Select a city...</option>
+              <option value="new-york">New York</option>
+              <option value="boston">Boston</option>
+              <option value="chicago">Chicago</option>
+              <option value="nashville">Nashville</option>
+              <option value="los-angeles">Los Angeles</option>
+            </select>
+            <button class="btn btn-info btn-block">Click Me</button>
+          </form>
+        </div>
+      </div>
+</body>
+</html>
