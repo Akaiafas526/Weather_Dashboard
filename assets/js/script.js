@@ -42,8 +42,8 @@ function parseData(data) {
   const uvi = todayWeather.uvi;
   const currentWind = todayWeather.wind_speed;
   const currentDay = todayWeather.dt;
-  const currentWeekDay = moment.unix(currentDay).format('dddd')
-  const currentDate = moment.unix(currentDay).format('MM/DD/YYYY')
+  const currentWeekDay = moment.unix(currentDay).format("dddd");
+  const currentDate = moment.unix(currentDay).format("MM/DD/YYYY");
   const currentIcon = todayWeather.weather[0].icon;
 
   const currentHtml = `
@@ -64,17 +64,38 @@ function parseData(data) {
 
   today.innerHTML = currentHtml;
 
-    forecastFn(forecastWeather)
-
+  forecastFn(forecastWeather);
 }
 function forecastFn(data) {
-    for(let i = 1; i <= 5; i++) {
-        console.log(data[i])
-        let weeklyTemp = data.temp['max'];
-        console.log(weeklyTemp)
-        let weeklyHumid = data.humidity;
-        let weeklyDay = data.dt;
-        let weeklyWind = data.wind_speed;
-        let weeklyIcon = data.weather;
-    }
+  for (let i = 1; i <= 5; i++) {
+    console.log(data[i]);
+    let weeklyTemp = data[i].temp.max;
+    console.log(weeklyTemp);
+    let weeklyHumid = data[i].humidity;
+    let weeklyDay = data[i].dt;
+    let weeklyWeekDay = moment.unix(weeklyDay).format("dddd");
+    let weeklyDate = moment.unix(weeklyDay).format("MM/DD/YYYY");
+    let weeklyWind = data[i].wind_speed;
+    let weeklyIcon = data[i].weather[0].icon;
+
+    let newEl = document.createElement('div');
+    newEl.classList.add('card');
+    newEl.style.width = '18rem';
+
+    let weeklyHtml = `
+    <div class="card-header">
+    ${weeklyWeekDay}
+    <br>
+    ${weeklyDate}
+    <img src='http://openweathermap.org/img/wn/${weeklyIcon}@2x.png'>
+    </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Temperature: ${weeklyTemp} \xB0F</li>
+    <li class="list-group-item">Humidity: ${weeklyHumid} %</li>
+    <li class="list-group-item">Wind Speed: ${weeklyWind} mph</li>
+  </ul>`;
+
+    newEl.innerHTML = weeklyHtml;
+    forecast.append(newEl)
+  }
 }
