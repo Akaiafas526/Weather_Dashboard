@@ -2,8 +2,20 @@ const input = document.getElementById("search-input");
 const today = document.getElementById("today");
 const forecast = document.getElementById("forecast");
 const submitButton = document.getElementById("submit");
+const cityList = document.getElementById("city-list")
 const apiKey = "8337e4d02a115b79233196cba37dc240";
 let city;
+
+submitButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    let searchCity = input.value;
+    today.innerHTML = '';
+    forecast.innerHTML = '';
+    let listItem = document.createElement('li');
+    listItem.textContent = searchCity;
+    cityList.append(listItem);
+    getCoordinates(searchCity);
+  });
 
 function getCoordinates(cityName) {
   const geoCoordinates = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`;
@@ -29,7 +41,6 @@ function getWeather(lat, lon) {
       parseData(data);
     });
 }
-getCoordinates("Austin");
 
 function parseData(data) {
   const todayWeather = data.current;
@@ -78,9 +89,9 @@ function forecastFn(data) {
     let weeklyWind = data[i].wind_speed;
     let weeklyIcon = data[i].weather[0].icon;
 
-    let newEl = document.createElement('div');
-    newEl.classList.add('card');
-    newEl.style.width = '18rem';
+    let newEl = document.createElement("div");
+    newEl.classList.add("card");
+    newEl.style.width = "18rem";
 
     let weeklyHtml = `
     <div class="card-header">
@@ -96,6 +107,6 @@ function forecastFn(data) {
   </ul>`;
 
     newEl.innerHTML = weeklyHtml;
-    forecast.append(newEl)
+    forecast.append(newEl);
   }
 }
