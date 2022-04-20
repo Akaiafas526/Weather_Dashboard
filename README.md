@@ -19,4 +19,4 @@ I've created a weather dashboard, that allows users to search a city within the 
 
 https://akaiafas526.github.io/Weather_Dashboard/
 
-\https://github.com/Akaiafas526/Weather_Dashboard
+https://github.com/Akaiafas526/Weather_Dashboard
