@@ -104,6 +104,7 @@ function parseData(data) {
 }
 function forecastFn(data) {
   for (let i = 1; i <= 5; i++) {
+    // forecast weather data
     console.log(data[i]);
     let weeklyTemp = data[i].temp.max;
     console.log(weeklyTemp);
