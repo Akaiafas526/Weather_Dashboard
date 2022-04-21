@@ -5,7 +5,7 @@ I've created a weather dashboard, that allows users to search a city within the 
 
 
 ## Screenshot
-![image](./Assets/images/weatherdashboard.png)
+![image](./assets/images/weatherdashboard.png)
 
 
 ## License
