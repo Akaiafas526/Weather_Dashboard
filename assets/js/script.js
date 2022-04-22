@@ -43,7 +43,7 @@ submitButton.addEventListener("click", (event) => {
 });
 
 function getCoordinates(cityName) {
-  const geoCoordinates = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`;
+  const geoCoordinates = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`;
   fetch(geoCoordinates)
     .then((response) => {
       return response.json();
